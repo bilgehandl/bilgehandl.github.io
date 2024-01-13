@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilgehandl</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Comic Sans, sans-serif;
+            line-height: 1.6;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+
+        .section-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .project {
+            background-color: #282828;
+            padding: 1rem;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            margin: 1rem 0;
+            display: inline-block;
+            width: 45%;
+            margin-right: 2%;
+            vertical-align: top;
+            text-align: left;
+            position: relative;
+            text-decoration: none;
+          
+        }
+
+        .project:hover {
+            cursor: pointer;
+            transform: translateY(-10px);
+        }
+
+        .project-description {
+            width: 100%;
+            background-color: #282828;
+            color: #fff;
+            text-align: left;
+            padding: 0.5rem;
+            border-radius: 5px;
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            will-change: opacity;
+        }
+
+        .project-description.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+   <section id="about" class="section-container">
+        <h1> Hakkımda</h1>
+        <p>
+    Adım Bilgehan, 19 yaşımdayım,"İlköğretim Matematik Öğretmenliği" öğrencisiyim. Birçok diğer meslek gibi öğretmenlik mesleğinin de çağın getirdiklerine ayak uydurmasını düşündüğüm için kendimi 21. yüzyıl öğrencilerine hitap edebilecek bir öğretmen olarak yetiştirmeye çalışıyorum. Bunun için birkaç çalışmam oldu:
+        </p>
+    </section>
+
+    <section id="projects" class="section-container">
+        <h1>Çalışmalarım</h1>
+        <a href="https://github.com/bilgehandl/Etkilesimli-Ders-Araclari" target="_blank" class="project">
+            <h2>Etkileşimli Ders Araçları</h2>
+            <div class="project-description">
+                <p>Çağın öğrencilerine uygun ders araçları. Etkileşimli sunumlar.</p>
+            </div>
+        </a>
+        <a href="https://github.com/bilgehandl/Orange-ile-Veri-Analizi/tree/main" target="_blank" class="project">
+            <h2>Veri Analizi</h2>
+            <div class="project-description">
+                <p>Orange uygulaması kullanarak yapılmış bir veri analizi.</p>
+            </div>
+        </a>
+    
+<!-- Add more projects as needed -->
+      
+      <script>
+        const projects = document.querySelectorAll('.project');
+
+projects.forEach(project => {
+    project.addEventListener('mouseover', () => {
+        const projectDescription = project.querySelector('.project-description');
+        projectDescription.classList.add('active');
+
+        // Hide other project descriptions
+        projects.forEach(otherProject => {
+            if (otherProject !== project) {
+                const otherProjectDescription = otherProject.querySelector('.project-description');
+                otherProjectDescription.classList.remove('active');
+            }
+        });
+    });
+
+    project.addEventListener('mouseout', () => {
+        const projectDescription = project.querySelector('.project-description');
+        projectDescription.classList.remove('active');
+    });
+});
+      </script>
+      </html>
